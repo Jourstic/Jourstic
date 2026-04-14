@@ -31,7 +31,11 @@ const personas = [
   },
 ];
 
-const PersonaScreen = () => {
+interface PersonaScreenProps {
+  onOpenHiddenGems?: () => void;
+}
+
+const PersonaScreen = ({ onOpenHiddenGems }: PersonaScreenProps) => {
   return (
     <div className="h-full overflow-y-auto px-4 pt-14 pb-28 bg-background">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
@@ -46,6 +50,7 @@ const PersonaScreen = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: i * 0.1 }}
+            onClick={() => p.id === "hidden-gems" && onOpenHiddenGems?.()}
             className={`w-full ${p.bgClass} rounded-2xl p-5 text-left border border-border/50 shadow-sm hover:shadow-md transition-all active:scale-[0.98]`}
           >
             <div className="flex items-start gap-4">
