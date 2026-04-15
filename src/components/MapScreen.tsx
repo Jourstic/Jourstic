@@ -21,10 +21,29 @@ const MapScreen = () => {
       <img src={mapBg} alt="Map" className="absolute inset-0 w-full h-full object-cover" />
 
       {/* Fog overlay for locked areas */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-2/3 h-1/3 bg-fog/40 backdrop-blur-sm rounded-bl-[80px] animate-fog-drift" />
-        <div className="absolute bottom-1/4 left-0 w-1/2 h-1/4 bg-fog/30 backdrop-blur-sm rounded-tr-[60px] animate-fog-drift" style={{ animationDelay: "2s" }} />
-      </div>
+      {checkpoints.filter(cp => !cp.unlocked).map((cp) => (
+        <div
+          key={`fog-${cp.id}`}
+          className="absolute pointer-events-none z-[5]"
+          style={{
+            left: `${cp.x}%`,
+            top: `${cp.y}%`,
+            transform: 'translate(-50%, -50%)',
+            width: '140px',
+            height: '140px',
+          }}
+        >
+          <div
+            className="w-full h-full rounded-full animate-fog-drift"
+            style={{
+              background: 'radial-gradient(circle, hsla(200,20%,85%,0.7) 0%, hsla(200,20%,90%,0.4) 40%, transparent 70%)',
+              backdropFilter: 'blur(6px)',
+              WebkitBackdropFilter: 'blur(6px)',
+              animationDelay: `${cp.id * 0.8}s`,
+            }}
+          />
+        </div>
+      ))}
 
       {/* Search bar */}
       <div className="absolute top-12 left-4 right-4 z-10">
