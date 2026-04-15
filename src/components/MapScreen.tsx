@@ -29,17 +29,16 @@ const MapScreen = () => {
             left: `${cp.x}%`,
             top: `${cp.y}%`,
             transform: 'translate(-50%, -50%)',
-            width: '140px',
-            height: '140px',
+            width: '260px',
+            height: '260px',
           }}
         >
           <div
-            className="w-full h-full rounded-full animate-fog-drift"
+            className="w-full h-full rounded-full"
             style={{
-              background: 'radial-gradient(circle, hsla(200,20%,85%,0.7) 0%, hsla(200,20%,90%,0.4) 40%, transparent 70%)',
-              backdropFilter: 'blur(6px)',
-              WebkitBackdropFilter: 'blur(6px)',
-              animationDelay: `${cp.id * 0.8}s`,
+              background: 'radial-gradient(circle, hsla(210,15%,92%,1) 0%, hsla(210,15%,90%,0.95) 30%, hsla(210,15%,88%,0.8) 50%, hsla(210,15%,85%,0.4) 70%, transparent 85%)',
+              backdropFilter: 'blur(16px)',
+              WebkitBackdropFilter: 'blur(16px)',
             }}
           />
         </div>
