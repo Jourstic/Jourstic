@@ -10,11 +10,11 @@ export default function AuthCallback() {
       const { error } = await supabase.auth.exchangeCodeForSession(window.location.href);
 
       if (error) {
-        navigate("/auth");
+        navigate("/auth", { replace: true });
         return;
       }
 
-      navigate("/");
+      navigate("/", { replace: true });
     };
 
     run();
