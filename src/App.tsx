@@ -7,13 +7,6 @@ import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import Index from "./pages/Index.tsx";
 import Auth from "./pages/Auth.tsx";
 import NotFound from "./pages/NotFound.tsx";
-import AuthCallback from "./pages/AuthCallback";
-
-<Routes>
-  <Route path="/auth" element={<Auth />} />
-  <Route path="/auth/callback" element={<AuthCallback />} />
-  <Route path="/" element={<div>OK LOGIN RỒI</div>} />
-</Routes>
 
 const queryClient = new QueryClient();
 
