@@ -43,3 +43,5 @@ const App = () => (
 );
 
 export default App;
+
+console.log("BUILD VERSION: 123");
