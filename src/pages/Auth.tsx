@@ -78,11 +78,11 @@ const Auth = () => {
     setLoading(true);
 
     const { error } = await supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: {
-        redirectTo: `${window.location.origin}/`,
-      },
-    });
+  provider: "google",
+  options: {
+    redirectTo: "https://persona-app-forge.vercel.app/",
+  },
+});
 
     if (error) {
       toast({
