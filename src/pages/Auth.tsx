@@ -258,7 +258,7 @@ const Auth = () => {
 
             <div className="text-center">
               <h1 className="text-3xl font-bold text-foreground tracking-tight">
-                Khám Phá Việt Nam
+                Jourstic – Khám Phá Việt Nam
               </h1>
               <p className="text-muted-foreground text-sm mt-2">
                 Đăng nhập để tiếp tục hành trình
