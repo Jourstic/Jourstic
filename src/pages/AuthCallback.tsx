@@ -1,0 +1,24 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
+
+export default function AuthCallback() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const run = async () => {
+      const { error } = await supabase.auth.exchangeCodeForSession(window.location.href);
+
+      if (error) {
+        navigate("/auth");
+        return;
+      }
+
+      navigate("/");
+    };
+
+    run();
+  }, [navigate]);
+
+  return <div>Đang đăng nhập...</div>;
+}
