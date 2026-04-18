@@ -1,8 +1,12 @@
 import { motion } from "framer-motion";
+<<<<<<< HEAD
 import { Award, Star, Gift, ChevronRight, Zap, LogOut } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+=======
+import { Award, Star, Gift, ChevronRight, Zap } from "lucide-react";
+>>>>>>> e65370b8647cb5ddf1e3993d4f819f965960e4f7
 
 const badges = [
   { id: 1, name: "Hành trình Tình yêu", emoji: "❤️", earned: true, color: "from-rose-400 to-pink-500" },
@@ -19,13 +23,17 @@ const vouchers = [
 ];
 
 const AchievementsScreen = () => {
+<<<<<<< HEAD
   const navigate = useNavigate();
   const [displayName, setDisplayName] = useState("Người khám phá");
 
+=======
+>>>>>>> e65370b8647cb5ddf1e3993d4f819f965960e4f7
   const xp = 2450;
   const nextLevel = 3000;
   const level = 12;
 
+<<<<<<< HEAD
   useEffect(() => {
     const getUserInfo = async () => {
       const {
@@ -78,6 +86,16 @@ const AchievementsScreen = () => {
         </button>
       </motion.div>
 
+=======
+  return (
+    <div className="h-full overflow-y-auto px-4 pt-14 pb-28 bg-background">
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+        <h1 className="text-2xl font-bold text-foreground mb-1">Thành tựu</h1>
+        <p className="text-sm text-muted-foreground mb-6">Explorer's Vault</p>
+      </motion.div>
+
+      {/* XP Card */}
+>>>>>>> e65370b8647cb5ddf1e3993d4f819f965960e4f7
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -101,6 +119,7 @@ const AchievementsScreen = () => {
             transition={{ duration: 1, delay: 0.3 }}
           />
         </div>
+<<<<<<< HEAD
         <p className="text-primary-foreground/70 text-xs">
           {nextLevel - xp} XP để lên Level {level + 1}
         </p>
@@ -110,6 +129,15 @@ const AchievementsScreen = () => {
         <Award className="w-5 h-5 text-primary" /> Huy chương
       </h2>
 
+=======
+        <p className="text-primary-foreground/70 text-xs">{nextLevel - xp} XP để lên Level {level + 1}</p>
+      </motion.div>
+
+      {/* Badges */}
+      <h2 className="text-lg font-bold text-foreground mb-3 flex items-center gap-2">
+        <Award className="w-5 h-5 text-primary" /> Huy chương
+      </h2>
+>>>>>>> e65370b8647cb5ddf1e3993d4f819f965960e4f7
       <div className="grid grid-cols-3 gap-3 mb-6">
         {badges.map((badge, i) => (
           <motion.div
@@ -123,6 +151,7 @@ const AchievementsScreen = () => {
                 : "bg-muted/50 border-border/30 opacity-50"
             }`}
           >
+<<<<<<< HEAD
             <div
               className={`w-12 h-12 rounded-xl mx-auto mb-2 flex items-center justify-center ${
                 badge.earned ? `bg-gradient-to-br ${badge.color}` : "bg-muted"
@@ -133,14 +162,29 @@ const AchievementsScreen = () => {
             <p className="text-[10px] font-semibold text-foreground leading-tight">
               {badge.name}
             </p>
+=======
+            <div className={`w-12 h-12 rounded-xl mx-auto mb-2 flex items-center justify-center ${
+              badge.earned ? `bg-gradient-to-br ${badge.color}` : "bg-muted"
+            }`}>
+              <span className="text-xl">{badge.emoji}</span>
+            </div>
+            <p className="text-[10px] font-semibold text-foreground leading-tight">{badge.name}</p>
+>>>>>>> e65370b8647cb5ddf1e3993d4f819f965960e4f7
           </motion.div>
         ))}
       </div>
 
+<<<<<<< HEAD
       <h2 className="text-lg font-bold text-foreground mb-3 flex items-center gap-2">
         <Gift className="w-5 h-5 text-accent" /> Kho Voucher
       </h2>
 
+=======
+      {/* Vouchers */}
+      <h2 className="text-lg font-bold text-foreground mb-3 flex items-center gap-2">
+        <Gift className="w-5 h-5 text-accent" /> Kho Voucher
+      </h2>
+>>>>>>> e65370b8647cb5ddf1e3993d4f819f965960e4f7
       <div className="space-y-3">
         {vouchers.map((v, i) => (
           <motion.div
@@ -168,4 +212,8 @@ const AchievementsScreen = () => {
   );
 };
 
+<<<<<<< HEAD
 export default AchievementsScreen;
+=======
+export default AchievementsScreen;
+>>>>>>> e65370b8647cb5ddf1e3993d4f819f965960e4f7
