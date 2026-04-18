@@ -12,11 +12,8 @@ const tabs: { id: Tab; icon: typeof Map; label: string }[] = [
   { id: "persona", icon: Compass, label: "Khám phá" },
   { id: "camera", icon: Camera, label: "Camera" },
   { id: "feed", icon: Users, label: "Feed" },
-<<<<<<< HEAD
   { id: "achievements", icon: Trophy, label: "Hồ sơ" },
-=======
   { id: "achievements", icon: Trophy, label: "Thành tựu" },
->>>>>>> e65370b8647cb5ddf1e3993d4f819f965960e4f7
 ];
 
 const BottomNav = ({ active, onTabChange }: BottomNavProps) => {

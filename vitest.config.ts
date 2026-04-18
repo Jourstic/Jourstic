@@ -10,6 +10,10 @@ export default defineConfig({
     setupFiles: ["./src/test/setup.ts"],
     include: ["src/**/*.{test,spec}.{ts,tsx}"],
   },
+  server: {
+    port: 8080,
+    strictPort: true,
+  },
   resolve: {
     alias: { "@": path.resolve(__dirname, "./src") },
   },
