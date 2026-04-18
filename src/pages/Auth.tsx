@@ -80,7 +80,7 @@ const Auth = () => {
     const { error } = await supabase.auth.signInWithOAuth({
   provider: "google",
   options: {
-    redirectTo: `${window.location.origin}/`,
+    redirectTo: 'https://persona-app-forge.vercel.app/auth/callback'
   },
 });
 
