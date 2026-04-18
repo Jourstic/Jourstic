@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
@@ -9,9 +9,8 @@ import {
   Palmtree,
   Compass,
   Camera,
-  Luggage,
+  Briefcase,
 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const decorations = [
@@ -25,7 +24,7 @@ const decorations = [
     delay: 0,
   },
   {
-    Icon: Luggage,
+    Icon: Briefcase,
     className: "top-[10%] right-[10%]",
     iconClass: "w-20 h-20 text-orange-400",
     floatY: [0, -12, 0],
@@ -74,31 +73,6 @@ const decorations = [
 const Auth = () => {
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const checkSession = async () => {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
-
-      if (session) {
-        navigate("/", { replace: true });
-      }
-    };
-
-    checkSession();
-
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      if (session) {
-        navigate("/", { replace: true });
-      }
-    });
-
-    return () => subscription.unsubscribe();
-  }, [navigate]);
 
   const handleGoogleLogin = async () => {
     setLoading(true);
@@ -106,7 +80,7 @@ const Auth = () => {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: `${window.location.origin}/`,
+        redirectTo: `${window.location.origin}/auth`,
       },
     });
 
@@ -122,59 +96,33 @@ const Auth = () => {
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-background flex items-center justify-center px-6">
-      {/* Glow background */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
           className="absolute -top-24 -left-24 w-96 h-96 bg-sky-200/30 rounded-full blur-3xl"
-          animate={{
-            x: [0, 30, 0],
-            y: [0, 20, 0],
-            scale: [1, 1.08, 1],
-          }}
+          animate={{ x: [0, 30, 0], y: [0, 20, 0], scale: [1, 1.08, 1] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
           className="absolute top-[8%] right-[10%] w-80 h-80 bg-emerald-200/25 rounded-full blur-3xl"
-          animate={{
-            x: [0, -24, 0],
-            y: [0, 16, 0],
-            scale: [1, 1.06, 1],
-          }}
+          animate={{ x: [0, -24, 0], y: [0, 16, 0], scale: [1, 1.06, 1] }}
           transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
           className="absolute -bottom-28 left-[18%] w-[28rem] h-[28rem] bg-amber-100/30 rounded-full blur-3xl"
-          animate={{
-            x: [0, 18, 0],
-            y: [0, -22, 0],
-            scale: [1, 1.04, 1],
-          }}
+          animate={{ x: [0, 18, 0], y: [0, -22, 0], scale: [1, 1.04, 1] }}
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
         />
       </div>
 
-      {/* Big floating travel icons */}
       <div className="absolute inset-0 pointer-events-none hidden md:block">
         {decorations.map(
-          (
-            { Icon, className, iconClass, floatY, rotate, duration, delay },
-            index
-          ) => (
+          ({ Icon, className, iconClass, floatY, rotate, duration, delay }, index) => (
             <motion.div
               key={index}
               className={`absolute ${className}`}
               initial={{ opacity: 0, scale: 0.9 }}
-              animate={{
-                opacity: [0.18, 0.35, 0.18],
-                y: floatY,
-                rotate,
-              }}
-              transition={{
-                duration,
-                delay,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
+              animate={{ opacity: [0.18, 0.35, 0.18], y: floatY, rotate }}
+              transition={{ duration, delay, repeat: Infinity, ease: "easeInOut" }}
             >
               <Icon className={iconClass} strokeWidth={1.8} />
             </motion.div>
@@ -182,7 +130,6 @@ const Auth = () => {
         )}
       </div>
 
-      {/* Main card */}
       <motion.div
         initial={{ opacity: 0, y: 28, scale: 0.96 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -204,11 +151,7 @@ const Auth = () => {
                   "0 10px 30px rgba(0,0,0,0.08)",
                 ],
               }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             >
               <MapPin className="w-8 h-8 text-primary-foreground" />
             </motion.div>
